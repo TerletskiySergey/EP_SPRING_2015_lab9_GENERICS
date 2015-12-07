@@ -165,7 +165,7 @@ public class MyTreeMap<K, V> implements MyMap<K, V> {
     }
 
     @Override
-    public Iterator entryIterator() {
+    public Iterator<Entry<K, V>> entryIterator() {
         return new EntryIterator();
     }
 
@@ -612,10 +612,14 @@ public class MyTreeMap<K, V> implements MyMap<K, V> {
         for (int i = 0; i < 20; i++) {
             Integer toAdd = (int) (Math.random() * 100);
             treeMap.put(toAdd, toAdd);
+            System.out.println(treeMap);
         }
         System.out.println("size = " + treeMap.size());
-        System.out.println(treeMap);
         System.out.println("\nBlack heights:");
         treeMap.showBlackHeights(treeMap.root, 0);
+        Iterator<Entry<Integer, Integer>> it = treeMap.entryIterator();
+        while(it.hasNext()){
+            System.out.println(it.next().getKey());
+        }
     }
 }
